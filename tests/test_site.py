@@ -63,6 +63,19 @@ class LandingPageTests(unittest.TestCase):
         self.assertIn('id="form-feedback"', self.html)
         self.assertIn("mailto:", self.html)
 
+    def test_netlify_form_submission(self):
+        self.assertIn('name="piloto-obraquote"', self.html)
+        self.assertIn('method="POST"', self.html)
+        self.assertIn('data-netlify="true"', self.html)
+        self.assertIn('netlify-honeypot="bot-field"', self.html)
+        self.assertIn('name="form-name" value="piloto-obraquote"', self.html)
+        self.assertIn('name="email" type="email"', self.html)
+        self.assertIn('action="/obrigado.html"', self.html)
+        self.assertTrue((PUBLIC / "obrigado.html").is_file())
+        script = (PUBLIC / "script.js").read_text(encoding="utf-8")
+        self.assertNotIn('window.location.assign', script)
+        self.assertNotIn('addEventListener(\'submit\'', script)
+
     def test_all_demonstration_assets(self):
         for path in (
             "assets/app-screenshot.webp", "assets/orcamento-example.webp",

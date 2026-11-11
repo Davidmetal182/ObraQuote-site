@@ -12,7 +12,7 @@ Contato para demonstrações: contato.obraquote@gmail.com
 - `netlify.toml`: publica somente o diretório `public/`, mantendo os arquivos de testes e configuração fora do site.
 - `tests/` e `.github/workflows/site-check.yml`: testes automáticos antes de atualizar o site.
 
-O formulário **abre o programa de e-mail do visitante** com uma mensagem pronta (`mailto:`). Ele não envia mensagens sem a confirmação da pessoa nem armazena dados num servidor.
+O formulário de interesse usa **Netlify Forms**: envia os dados diretamente pelo navegador, sem abrir um aplicativo de e-mail. A Netlify armazena as solicitações para consulta no painel. O link de e-mail permanece como alternativa.
 
 ## Publicação inicial via GitHub (Windows / PowerShell)
 
@@ -56,8 +56,22 @@ cd public
 python -m http.server 8000
 ```
 
-Abra `http://localhost:8000`. Confira responsividade, imagens, vídeo e botão de contato. Faça um envio de e-mail de teste para confirmar o recebimento.
+Abra `http://localhost:8000`. Confira responsividade, imagens, vídeo e botão de contato. Após ativar Netlify Forms, envie uma solicitação de teste no site publicado e confirme que aparece no painel Forms. Para receber alertas por e-mail, configure uma notificação para contato.obraquote@gmail.com.
 
 ## Segurança e privacidade
 
 A versão piloto do aplicativo não é uma loja e não calcula impostos legais oficiais nem conversão de câmbio. Este repositório é público, então todo arquivo commitado poderá ser visto por outras pessoas. Não inclua informações reais de clientes ou custos internos de obras.
+
+
+## Receber pedidos de demonstração via Netlify Forms
+
+1. Na Netlify, abra o projeto **obraquote** e entre em **Forms**.
+2. Ative **Enable form detection** antes do próximo deploy, se ainda não estiver ativado.
+3. Publique esta alteração no GitHub (`main`). A Netlify fará o deploy e registrará o formulário `piloto-obraquote`.
+4. Em **Forms > Submission notifications**, crie uma notificação de e-mail para `contato.obraquote@gmail.com` e confirme o endereço, se solicitado.
+5. No site público, preencha nome, e-mail, atividade e mensagem com dados seus de teste. Clique em **Solicitar demonstração gratuita**.
+6. A página `/obrigado.html` deve aparecer; confira também a nova entrada em **Forms > Submissions** e o e-mail de notificação.
+
+**Privacidade:** ao contrário da versão antiga, agora há coleta e armazenamento dos dados enviados. Revise periodicamente os envios no painel da Netlify e exclua os que não forem mais necessários. Os dados se destinam apenas ao retorno da equipe ObraQuote.
+
+**Atenção:** sem habilitar a detecção no painel e sem configurar notificações, não é possível garantir o recebimento de pedidos nem os alertas por e-mail. Não divulgue até concluir o teste de ponta a ponta.
