@@ -1,0 +1,3 @@
+# Deploy only public site assets; do not publish tests or repository configuration.
+[build]
+  publish = "public"

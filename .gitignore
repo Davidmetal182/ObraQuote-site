@@ -1,0 +1,18 @@
+# Netlify local and development state
+.netlify/
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Local outputs, logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
+__pycache__/
+*.py[cod]
+.venv/
+
+# Archives and draft screenshots (do not publish personal files)
+*.zip
+preview-*.png
